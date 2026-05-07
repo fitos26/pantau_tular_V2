@@ -15,6 +15,7 @@ let mockMapServices: Record<
     showPrecipitationLayer: jest.Mock;
     showTemperatureLayer: jest.Mock;
     showSeverityLayer: jest.Mock;
+    showCaseHeatmapLayer: jest.Mock;
   }
 >;
 
@@ -76,6 +77,7 @@ jest.mock("../../app/components/IndonesiaMap", () => {
             showPrecipitationLayer: jest.fn(),
             showTemperatureLayer: jest.fn(),
             showSeverityLayer: jest.fn(),
+            showCaseHeatmapLayer: jest.fn(),
           };
           mockMapServices[mapId] = service;
           onMapReady(service);
@@ -200,7 +202,7 @@ describe("SpatialComparisonPanel", () => {
 
     const card = await screen.findByTestId("comparison-card");
     expect(card).toBeInTheDocument();
-    expect(mockMapServices["comparison-map-0"].hideAllLayers).toHaveBeenCalled();
+    expect(mockMapServices["comparison-map-0"].showCaseHeatmapLayer).toHaveBeenCalled();
 
     const metricSelect = screen.getByTestId("metric-select");
     fireEvent.change(metricSelect, { target: { value: "humidity" } });

@@ -228,7 +228,7 @@ describe("IndonesiaMap Component", () => {
     jest.spyOn(console, "error").mockImplementation(() => {});
     
     (useIndonesiaMap as jest.Mock).mockImplementation((...args) => {
-      const onError = args[7];
+      const onError = args[8];
       onError("Map initialization failed");
       return { mapService: null };
     });

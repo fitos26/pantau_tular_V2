@@ -264,6 +264,7 @@ export default function MapPage() {
                   provinceHumidityData={provinceHumidityData}
                   provincePrecipitationData={provincePrecipitationData}
                   provinceSeverityData={provinceSeverityData}
+                  provinceCaseHeatmapData={provinceCaseHeatmapData}
                   provinceTemperatureData={provinceTemperatureData}
                   maxRegions={2}
                   overlayMode

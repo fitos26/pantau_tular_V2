@@ -15,6 +15,7 @@ interface SpatialComparisonPanelProps {
   provinceTemperatureData: ProvinceData[];
   provincePrecipitationData: ProvinceData[];
   provinceSeverityData: ProvinceData[];
+  provinceCaseHeatmapData?: ProvinceData[];
   initialRegions?: SpatialComparisonRegion[];
   maxRegions?: number;
   overlayMode?: boolean;
@@ -48,6 +49,7 @@ const ComparisonCard = ({
   provinceTemperatureData,
   provincePrecipitationData,
   provinceSeverityData,
+  provinceCaseHeatmapData,
   onError,
   lastUpdated,
 }: {
@@ -57,6 +59,7 @@ const ComparisonCard = ({
   provinceTemperatureData: ProvinceData[];
   provincePrecipitationData: ProvinceData[];
   provinceSeverityData: ProvinceData[];
+  provinceCaseHeatmapData: ProvinceData[];
   onError: (message: string) => void;
   lastUpdated: Date | null;
 }) => {
@@ -77,6 +80,9 @@ const ComparisonCard = ({
         break;
       case "severity":
         service.showSeverityLayer();
+        break;
+      case "cases":
+        service.showCaseHeatmapLayer();
         break;
       default:
         service.hideAllLayers();
@@ -123,6 +129,7 @@ const ComparisonCard = ({
           provincePrecipitationData={provincePrecipitationData}
           provinceTemperatureData={provinceTemperatureData}
           provinceSeverityData={provinceSeverityData}
+          provinceCaseHeatmapData={provinceCaseHeatmapData}
           config={{ zoomLevel: 2, centerPoint: { longitude: 113.9213, latitude: 0.7893 } }}
           width="100%"
           height="320px"
@@ -149,6 +156,7 @@ export default function SpatialComparisonPanel(props: SpatialComparisonPanelProp
     provinceTemperatureData,
     provincePrecipitationData,
     provinceSeverityData,
+    provinceCaseHeatmapData = [],
     initialRegions,
     maxRegions,
     overlayMode = false,
@@ -389,6 +397,7 @@ export default function SpatialComparisonPanel(props: SpatialComparisonPanelProp
               provinceTemperatureData={provinceTemperatureData}
               provincePrecipitationData={provincePrecipitationData}
               provinceSeverityData={provinceSeverityData}
+              provinceCaseHeatmapData={provinceCaseHeatmapData}
               onError={onError}
               lastUpdated={lastUpdated}
             />

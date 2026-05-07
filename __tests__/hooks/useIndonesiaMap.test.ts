@@ -163,9 +163,6 @@ describe("useIndonesiaMap", () => {
   });
 
   test("should dispose map service on unmount", async () => {
-    const { mapServiceRef } = setupRefs();
-    mapServiceRef.current = new MapChartService();
-    
     const { unmount } = renderHookWithProps();
 
     unmount();
