@@ -59,7 +59,7 @@ const withTimeout = async (url: string, options: RequestInit, timeoutMs = REQUES
 };
 
 const safeReadBody = async (response: Response) => {
-  const contentType = response.headers.get("content-type") || "";
+  const contentType = response.headers?.get?.("content-type") || "";
 
   try {
     if (contentType.includes("application/json")) {
@@ -142,8 +142,8 @@ const fetchJson = async <T = any>(
       );
     }
 
-    const contentType = response.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
+    const contentType = response.headers?.get?.("content-type") || "";
+    if (!contentType.includes("application/json") && typeof response.json !== "function") {
       return {} as T;
     }
 
