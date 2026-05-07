@@ -1,0 +1,68 @@
+
+> pantautular-fe@0.1.0 dev
+> next dev -H 127.0.0.1 -p 3000
+
+   ▲ Next.js 15.5.15
+   - Local:        http://127.0.0.1:3000
+   - Network:      http://127.0.0.1:3000
+   - Environments: .env
+   - Experiments (use with caution):
+     · clientTraceMetadata
+
+ ✓ Starting...
+ ○ Compiling /instrumentation ...
+ ✓ Compiled /instrumentation in 14s (1165 modules)
+ ✓ Ready in 45.2s
+ ○ Compiling / ...
+ ✓ Compiled /dashboard in 59.8s (4733 modules)
+API_BASE_RAW = http://localhost:8000/api
+API_BASE = http://127.0.0.1:8000
+API_API_BASE = http://127.0.0.1:8000/api
+ GET /dashboard 200 in 15592ms
+ GET / 200 in 307ms
+ GET /map 200 in 241ms
+ GET /dashboard 200 in 190ms
+ GET /map 200 in 1229ms
+ GET /dashboard 200 in 393ms
+ GET /dashboard 200 in 857ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 11.6s (4737 modules)
+ GET /login 200 in 13261ms
+API_BASE_RAW = http://localhost:8000/api
+API_BASE = http://127.0.0.1:8000
+API_API_BASE = http://127.0.0.1:8000/api
+ GET /login 200 in 2107ms
+ GET /dashboard 200 in 2239ms
+ GET /login 200 in 99ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.5s (3194 modules)
+ GET / 200 in 3706ms
+ ○ Compiling /map ...
+ ✓ Compiled /map in 3.3s (3441 modules)
+ GET /map 200 in 8938ms
+ ○ Compiling /admin-user-log-menu ...
+ ✓ Compiled /admin-user-log-menu in 9s (5366 modules)
+ GET /admin-user-log-menu 200 in 10150ms
+API_BASE_RAW = http://localhost:8000/api
+API_BASE = http://127.0.0.1:8000
+API_API_BASE = http://127.0.0.1:8000/api
+ GET /admin-user-log-menu 200 in 1454ms
+ ✓ Compiled in 16.7s (5380 modules)
+ GET /admin-user-log-menu 200 in 1005ms
+ ✓ Compiled in 3.3s (5380 modules)
+ GET /admin-user-log-menu 200 in 884ms
+ ✓ Compiled in 15.7s (5380 modules)
+ GET /admin-user-log-menu 200 in 1030ms
+ ✓ Compiled in 3.2s (5380 modules)
+ GET /admin-user-log-menu 200 in 1058ms
+ ✓ Compiled in 4.1s (5380 modules)
+ GET /admin-user-log-menu 200 in 519ms
+ ✓ Compiled in 3.3s (5380 modules)
+ GET /admin-user-log-menu 200 in 464ms
+API_BASE_RAW = http://localhost:8000/api
+API_BASE = http://127.0.0.1:8000
+API_API_BASE = http://127.0.0.1:8000/api
+ GET /map 200 in 1804ms
+ ○ Compiling /_error ...
+ GET /map 500 in 8087ms
+ ✓ Compiled /_error in 9.2s (6068 modules)

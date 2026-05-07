@@ -1,0 +1,2 @@
+disease,gender,age,city,status,severity,location_city,location_province,news_portal,news_title,news_type,news_content,news_url,news_author,news_date_published,location_latitude,location_longitude,news_img_url
+Dengue,Male,14,Yogyakarta,Bahaya,Mortalitas,Yogyakarta,DI Yogyakarta,Tribun,Kasus DBD Meningkat Saat Musim Hujan,artikel,Dinas kesehatan mengimbau masyarakat menjaga kebersihan lingkungan untuk mencegah sarang nyamuk.,https://tribunnews.com/dbd-yogya,Reporter A,2024-07-10T10:15:00Z,-7.7956,110.3695,https://example.com/dbd-image.jpg

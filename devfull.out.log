@@ -1,0 +1,52 @@
+[dev] Starting Django backend on http://localhost:8000
+[dev] Starting Next.js frontend on http://localhost:3000
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.56.1:3000
+   - Environments: .env
+   - Experiments (use with caution):
+     · clientTraceMetadata
+
+ ✓ Starting...
+ ○ Compiling /instrumentation ...
+ ✓ Compiled /instrumentation in 6.9s (1165 modules)
+ ✓ Ready in 13.6s
+   Reload env: .env
+ ✓ Compiled in 1743ms (1165 modules)
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 15.5s (4086 modules)
+API_BASE_RAW = http://localhost:8000/api
+API_BASE = http://localhost:8000
+API_API_BASE = http://localhost:8000/api
+ ✓ Compiled in 4.4s (1000 modules)
+ GET /dashboard 200 in 511ms
+ ○ Compiling /map ...
+ ✓ Compiled /map in 12.9s (4703 modules)
+API_BASE_RAW = http://localhost:8000/api
+API_BASE = http://localhost:8000
+API_API_BASE = http://localhost:8000/api
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 6.8s (4622 modules)
+API_BASE_RAW = http://localhost:8000/api
+API_BASE = http://localhost:8000
+API_API_BASE = http://localhost:8000/api
+ GET /map 404 in 9541ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 6.4s (5310 modules)
+ GET /map 200 in 8985ms
+ GET /map 200 in 1034ms
+   Reload env: .env
+ ✓ Compiled in 13.1s (5660 modules)
+   Reload env: .env
+ ✓ Compiled in 4.1s (5564 modules)
+[?25h
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 26, 2026 - 22:39:48
+Django version 5.2.13, using settings 'config.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CTRL-BREAK.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/

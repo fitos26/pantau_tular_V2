@@ -1,0 +1,19 @@
+[@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead.
+[@sentry/nextjs] DEPRECATION WARNING: automaticVercelMonitors is deprecated and will be removed in a future version. Use webpack.automaticVercelMonitors instead.
+Watching for file changes with StatReloader
+[@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead.
+[@sentry/nextjs] DEPRECATION WARNING: automaticVercelMonitors is deprecated and will be removed in a future version. Use webpack.automaticVercelMonitors instead.
+[@sentry/nextjs] You have enabled `debug: true`, but Sentry debug logging was removed from your bundle (likely via `withSentryConfig({ disableLogger: true })` / `webpack.treeshake.removeDebugLogging: true`). Set that option to `false` to see Sentry debug output.
+[Sentry] Cannot initialize SDK with `debug` option using a non-debug bundle.
+Failed to proxy https://o4509303352459264.ingest.us.sentry.io/api/4509303353966592/envelope/?o=4509303352459264&p=4509303353966592&r=us&hsts=0 [Error: read ECONNRESET] {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[Error: read ECONNRESET] {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'E:\pantautular-fe-Django\.next\cache\webpack\client-development\23.pack.gz_' -> 'E:\pantautular-fe-Django\.next\cache\webpack\client-development\23.pack.gz'
+E:\pantautular-fe-Django\backend\cases\services\map_data.py changed, reloading.

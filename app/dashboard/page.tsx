@@ -1,0 +1,49 @@
+// dashboard/page.tsx
+"use client";
+import React, { useCallback, useState } from "react";
+import Navbar from "../components/Navbar";
+import FilterSection from "../components/dashboard/FilterSection";
+import InformationSection from "../components/dashboard/InformationSection";
+import { FilterState, FilterStateDashboard } from "@/types";
+
+const Page = () => {
+  // Hold the current filters in state – initially no filters are applied.
+  const [filterState, setFilterState] = useState<FilterState | undefined>(undefined);
+
+  // This callback will be triggered when the user submits new filters.
+  const handleFilterSubmit = useCallback((filters: FilterStateDashboard) => {
+    console.log('Filter submitted:', filters);
+    setFilterState({
+      ...filters,
+      locations: [
+        ...(filters.locations?.provinces ?? []),
+        ...(filters.locations?.cities ?? []),
+      ],
+    });
+  }, []);
+
+  // A simple error handler that you can expand as needed.
+  const handleError = useCallback((message: string) => {
+    console.error(message);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#ebf3f5] ">
+      <Navbar />
+      <div className="h-full flex w-full gap-5">
+        <div className="w-2/5 bg-transparent">
+          <FilterSection 
+            onSubmitFilterState={handleFilterSubmit}
+            onError={handleError}
+            // You can pass an initialFilterState here if needed.
+          />
+        </div>
+        <div className="w-3/5 bg-transparent">
+          <InformationSection filterState={filterState} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Page;

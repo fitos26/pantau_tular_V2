@@ -1,0 +1,70 @@
+Watching for file changes with StatReloader
+Unauthorized: /admin-feature/stats
+[29/Apr/2026 12:27:20] "GET /admin-feature/stats HTTP/1.1" 401 58
+Unauthorized: /admin-feature/users
+[29/Apr/2026 12:27:20] "GET /admin-feature/users HTTP/1.1" 401 58
+Unauthorized: /admin-feature/api/admin/user-logs/all
+[29/Apr/2026 12:27:20] "GET /admin-feature/api/admin/user-logs/all HTTP/1.1" 401 58
+[29/Apr/2026 12:27:20] "GET /expert-feature/experts/batches/ HTTP/1.1" 200 2
+[29/Apr/2026 12:27:20,429] - Broken pipe from ('127.0.0.1', 56243)
+E:\pantautular-fe-Django\backend\config\urls.py changed, reloading.
+Watching for file changes with StatReloader
+E:\pantautular-fe-Django\backend\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\pantautular-fe-Django\backend\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /admin-feature/stats
+[29/Apr/2026 12:28:26] "GET /admin-feature/stats HTTP/1.1" 401 58
+Unauthorized: /admin-feature/users
+[29/Apr/2026 12:28:26] "GET /admin-feature/users HTTP/1.1" 401 58
+Unauthorized: /admin-feature/api/admin/user-logs/all
+[29/Apr/2026 12:28:26] "GET /admin-feature/api/admin/user-logs/all HTTP/1.1" 401 58
+Unauthorized: /api/admin-feature/stats
+[29/Apr/2026 12:28:26] "GET /api/admin-feature/stats HTTP/1.1" 401 58
+Unauthorized: /api/admin-feature/users
+[29/Apr/2026 12:28:26] "GET /api/admin-feature/users HTTP/1.1" 401 58
+Unauthorized: /api/admin-feature/api/admin/user-logs/all
+[29/Apr/2026 12:28:26] "GET /api/admin-feature/api/admin/user-logs/all HTTP/1.1" 401 58
+[29/Apr/2026 12:28:26] "GET /expert-feature/experts/batches/ HTTP/1.1" 200 2
+[29/Apr/2026 12:28:26,881] - Broken pipe from ('127.0.0.1', 57690)
+[29/Apr/2026 12:34:08] "OPTIONS /admin-feature/stats HTTP/1.1" 200 0
+[29/Apr/2026 12:34:08] "OPTIONS /admin-feature/stats HTTP/1.1" 200 0
+Unauthorized: /admin-feature/stats
+[29/Apr/2026 12:34:08] "GET /admin-feature/stats HTTP/1.1" 401 172
+Unauthorized: /admin-feature/stats
+[29/Apr/2026 12:34:08] "GET /admin-feature/stats HTTP/1.1" 401 172
+[29/Apr/2026 12:34:44] "POST /api/login HTTP/1.1" 200 834
+[29/Apr/2026 12:34:50] "OPTIONS /admin-feature/stats HTTP/1.1" 200 0
+[29/Apr/2026 12:34:50] "OPTIONS /admin-feature/stats HTTP/1.1" 200 0
+[29/Apr/2026 12:34:50] "GET /admin-feature/stats HTTP/1.1" 200 101
+[29/Apr/2026 12:34:51] "GET /admin-feature/stats HTTP/1.1" 200 101
+[29/Apr/2026 12:34:58] "OPTIONS /admin-feature/api/admin/user-logs/all HTTP/1.1" 200 0
+[29/Apr/2026 12:34:58] "OPTIONS /admin-feature/api/admin/user-logs/all HTTP/1.1" 200 0
+[29/Apr/2026 12:34:59] "GET /admin-feature/api/admin/user-logs/all HTTP/1.1" 200 160385
+[29/Apr/2026 12:34:59] "GET /admin-feature/api/admin/user-logs/all HTTP/1.1" 200 160385
+[29/Apr/2026 12:39:41] "OPTIONS /admin-feature/api/admin/user-logs/all HTTP/1.1" 200 0
+Unauthorized: /admin-feature/api/admin/user-logs/all
+[29/Apr/2026 12:39:41] "GET /admin-feature/api/admin/user-logs/all HTTP/1.1" 401 58
+[29/Apr/2026 12:51:08] "OPTIONS /api/map-data/?min_lat=-18.613111785450727&max_lat=14.200516602505946&min_lng=101.71272413793102&max_lng=133.28727586206895&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:51:09] "OPTIONS /api/map-data/?min_lat=-18.442684128988414&max_lat=14.026198178181222&min_lng=101.71272413793103&max_lng=133.28727586206895&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:51:09] "GET /api/map-data/?min_lat=-18.613111785450727&max_lat=14.200516602505946&min_lng=101.71272413793102&max_lng=133.28727586206895&zoom=1 HTTP/1.1" 200 5815
+[29/Apr/2026 12:51:10] "GET /api/map-data/?min_lat=-18.442684128988414&max_lat=14.026198178181222&min_lng=101.71272413793103&max_lng=133.28727586206895&zoom=1 HTTP/1.1" 200 5815
+[29/Apr/2026 12:51:11] "OPTIONS /api/map-data/?min_lat=-18.721442483255345&max_lat=14.311341440545345&min_lng=101.71272413793103&max_lng=133.28727586206895&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:51:11] "GET /api/map-data/?min_lat=-18.721442483255345&max_lat=14.311341440545345&min_lng=101.71272413793103&max_lng=133.28727586206895&zoom=1 HTTP/1.1" 200 5815
+[29/Apr/2026 12:53:26] "GET /api/map-data/?min_lat=-9.524794871881351&max_lat=4.961522313747824&min_lng=101.71272413793103&max_lng=133.28727586206895&zoom=1 HTTP/1.1" 200 5798
+[29/Apr/2026 12:53:28] "OPTIONS /api/map-data/?min_lat=-14.661509755861305&max_lat=6.2416536706311145&min_lng=95.55201946560966&max_lng=141.33511946560967&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:53:28] "GET /api/map-data/?min_lat=-14.661509755861305&max_lat=6.2416536706311145&min_lng=95.55201946560966&max_lng=141.33511946560967&zoom=1 HTTP/1.1" 200 7417
+[29/Apr/2026 12:53:33] "OPTIONS /api/map-data/?min_lat=-27.473900758482497&max_lat=19.626021634870753&min_lng=95.55201946560966&max_lng=141.33511946560964&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:53:33] "GET /api/map-data/?min_lat=-27.473900758482497&max_lat=19.626021634870753&min_lng=95.55201946560966&max_lng=141.33511946560964&zoom=1 HTTP/1.1" 200 7417
+[29/Apr/2026 12:55:05] "OPTIONS /api/map-data/?min_lat=-24.53523505713317&max_lat=22.67547455348704&min_lng=95.42624171835693&max_lng=141.2093417183569&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:55:05] "GET /api/map-data/?min_lat=-24.53523505713317&max_lat=22.67547455348704&min_lng=95.42624171835693&max_lng=141.2093417183569&zoom=1 HTTP/1.1" 200 7417
+[29/Apr/2026 12:55:15] "OPTIONS /api/map-data/?min_lat=-31.716400296617245&max_lat=14.967408758797045&min_lng=61.52913883374711&max_lng=107.31223883374709&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:55:15] "GET /api/map-data/?min_lat=-31.716400296617245&max_lat=14.967408758797045&min_lng=61.52913883374711&max_lng=107.31223883374709&zoom=1 HTTP/1.1" 200 2052
+[29/Apr/2026 12:55:16] "OPTIONS /api/map-data/?min_lat=-31.716400296617245&max_lat=14.967408758797045&min_lng=66.30869322935072&max_lng=112.0917932293507&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:55:16] "GET /api/map-data/?min_lat=-31.716400296617245&max_lat=14.967408758797045&min_lng=66.30869322935072&max_lng=112.0917932293507&zoom=1 HTTP/1.1" 200 2756
+[29/Apr/2026 12:55:20] "OPTIONS /api/map-data/?min_lat=-24.0767213805723&max_lat=23.138906766260185&min_lng=91.77868704802786&max_lng=137.56178704802784&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:55:20] "GET /api/map-data/?min_lat=-24.0767213805723&max_lat=23.138906766260185&min_lng=91.77868704802786&max_lng=137.56178704802784&zoom=1 HTTP/1.1" 200 6964
+[29/Apr/2026 12:56:16] "OPTIONS /api/map-data/?min_lat=-23.73175500667249&max_lat=23.485434680505566&min_lng=89.13735435572143&max_lng=134.92045435572143&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:56:16] "GET /api/map-data/?min_lat=-23.73175500667249&max_lat=23.485434680505566&min_lng=89.13735435572143&max_lng=134.92045435572143&zoom=1 HTTP/1.1" 200 6509
+[29/Apr/2026 12:56:19] "OPTIONS /api/map-data/?min_lat=-25.16296182174437&max_lat=22.03569459465159&min_lng=88.82290998758954&max_lng=134.60600998758952&zoom=1 HTTP/1.1" 200 0
+[29/Apr/2026 12:56:19] "GET /api/map-data/?min_lat=-25.16296182174437&max_lat=22.03569459465159&min_lng=88.82290998758954&max_lng=134.60600998758952&zoom=1 HTTP/1.1" 200 6509

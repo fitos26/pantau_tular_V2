@@ -1,0 +1,344 @@
+import * as am5 from "@amcharts/amcharts5";
+import * as am5map from "@amcharts/amcharts5/map";
+import { TEMPERATURE_COLORS } from "../../types";
+
+/**
+ * Factory class for creating map legends
+ */
+export class LegendBuilder {
+  private readonly root: am5.Root;
+  private readonly chart: am5map.MapChart;
+
+  constructor(root: am5.Root, chart: am5map.MapChart) {
+    this.root = root;
+    this.chart = chart;
+  }
+
+  /**
+   * Creates a humidity legend with color-coded scale
+   */
+  createHumidityLegend(): am5.Container {
+    // Create custom legend - positioned at the bottom center
+    const humidityLegend = this.chart.children.push(am5.Container.new(this.root, {
+      width: am5.percent(80),
+      height: 50,
+      layout: this.root.horizontalLayout,
+      position: "absolute",
+      x: am5.percent(50),
+      centerX: am5.percent(50),
+      y: am5.percent(100),
+      dy: -30,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 5,
+      paddingBottom: 5
+    }));
+
+    // Create a container for the labels and color blocks
+    const humidityLabelsContainer = humidityLegend.children.push(am5.Container.new(this.root, {
+      width: am5.percent(100),
+      height: am5.percent(100),
+      layout: this.root.horizontalLayout,
+      centerY: am5.percent(50)
+    }));
+
+    // Create color blocks container
+    const humidityBlocksContainer = humidityLabelsContainer.children.push(am5.Container.new(this.root, {
+      width: am5.percent(60),
+      height: 20,
+      layout: this.root.horizontalLayout,
+      marginLeft: 10,
+      marginRight: 10,
+      centerY: am5.percent(50)
+    }));
+
+    // Define the colors and value ranges for each block
+    const humidityColorBlocks = [
+      { color: "#C41A0A", range: "0%" },
+      { color: "#F4440B", range: "10%" },
+      { color: "#F47A0B", range: "20%" },
+      { color: "#F4B00B", range: "30%" },
+      { color: "#F4E60B", range: "40%" },
+      { color: "#D2EE3C", range: "50%" },
+      { color: "#AFF474", range: "60%" },
+      { color: "#A3D4FF", range: "70%" },
+      { color: "#6DBCFF", range: "80%" },
+      { color: "#1392FF", range: "90%" },
+      { color: "#00528F", range: "100%" }
+    ];
+
+    // Create blocks for legend
+    this.createColorBlocks(humidityBlocksContainer, humidityColorBlocks);
+
+    // Initially hide the legend
+    humidityLegend.hide();
+
+    return humidityLegend;
+  }
+
+  /**
+   * Creates a precipitation legend with pattern categories
+   */
+  createPrecipitationLegend(): am5.Container {
+    // Create custom legend - positioned at the bottom center
+    const precipitationLegend = this.chart.children.push(am5.Container.new(this.root, {
+      width: am5.percent(80),
+      height: 50,
+      layout: this.root.horizontalLayout,
+      position: "absolute",
+      x: am5.percent(50),
+      centerX: am5.percent(50),
+      y: am5.percent(100),
+      dy: -30,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 5,
+      paddingBottom: 5
+    }));
+
+    // Create a container for the labels and color blocks
+    const precipitationLabelsContainer = precipitationLegend.children.push(am5.Container.new(this.root, {
+      width: am5.percent(100),
+      height: am5.percent(100),
+      layout: this.root.horizontalLayout,
+      centerY: am5.percent(50)
+    }));
+
+    // Create color blocks container
+    const precipitationBlocksContainer = precipitationLabelsContainer.children.push(am5.Container.new(this.root, {
+      width: am5.percent(60),
+      height: 20,
+      layout: this.root.horizontalLayout,
+      marginLeft: 10,
+      marginRight: 10,
+      centerY: am5.percent(50)
+    }));
+
+    // Define the colors and value ranges for each block
+    const precipitationColorBlocks = [
+      { color: "#DC3545", range: "Lokal" },
+      { color: "#E35D6A", range: "Multipattern" },
+      { color: "#FFC107", range: "Monsoon" },
+      { color: "#3CB371", range: "Equatorial" },
+      { color: "#B8B8B8", range: "Lainnya" },
+    ];
+
+    // Create blocks for legend
+    this.createColorBlocks(precipitationBlocksContainer, precipitationColorBlocks);
+
+    // Initially hide the legend
+    precipitationLegend.hide();
+
+    return precipitationLegend;
+  }
+
+  /**
+   * Creates a temperature legend with color scale
+   */
+  createTemperatureLegend(): am5.Container {
+    // Create temperature legend
+    const temperatureLegend = this.chart.children.push(am5.Container.new(this.root, {
+      width: am5.percent(80),
+      height: 50,
+      layout: this.root.horizontalLayout,
+      position: "absolute",
+      x: am5.percent(50),
+      centerX: am5.percent(50),
+      y: am5.percent(100),
+      dy: -30,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 5,
+      paddingBottom: 5
+    }));
+
+    // Create labels container
+    const temperatureLabelsContainer = temperatureLegend.children.push(am5.Container.new(this.root, {
+      width: am5.percent(100),
+      height: am5.percent(100),
+      layout: this.root.horizontalLayout,
+      centerY: am5.percent(50)
+    }));
+
+    // Create color blocks container
+    const temperatureBlocksContainer = temperatureLabelsContainer.children.push(am5.Container.new(this.root, {
+      width: am5.percent(60),
+      height: 20,
+      layout: this.root.horizontalLayout,
+      marginLeft: 10,
+      marginRight: 10,
+      centerY: am5.percent(50)
+    }));
+
+    // Define the colors and value ranges for each block
+    const temperatureColorBlocks = [
+      { color: TEMPERATURE_COLORS[-10], range: "-10°C" },
+      { color: TEMPERATURE_COLORS[-5], range: "-5°C" },
+      { color: TEMPERATURE_COLORS[0], range: "0°C" },
+      { color: TEMPERATURE_COLORS[5], range: "5°C" },
+      { color: TEMPERATURE_COLORS[10], range: "10°C" },
+      { color: TEMPERATURE_COLORS[15], range: "15°C" },
+      { color: TEMPERATURE_COLORS[20], range: "20°C" },
+      { color: TEMPERATURE_COLORS[25], range: "25°C" },
+      { color: TEMPERATURE_COLORS[30], range: "30°C" },
+      { color: TEMPERATURE_COLORS[35], range: "35°C" },
+      { color: TEMPERATURE_COLORS[40], range: "40°C" }
+    ];
+
+    // Create blocks for temperature legend with smaller font due to more items
+    this.createColorBlocks(temperatureBlocksContainer, temperatureColorBlocks);
+
+    // Initially hide the legend
+    temperatureLegend.hide();
+
+    return temperatureLegend;
+  }
+
+  /**
+   * Creates a severity legend with status categories
+   */
+  createSeverityLegend(): am5.Container {
+    // Create custom legend - positioned at the bottom center
+    const severityLegend = this.chart.children.push(am5.Container.new(this.root, {
+      width: am5.percent(80),
+      height: 50,
+      layout: this.root.horizontalLayout,
+      position: "absolute",
+      x: am5.percent(50),
+      centerX: am5.percent(50),
+      y: am5.percent(100),
+      dy: -30,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 5,
+      paddingBottom: 5
+    }));
+
+    // Create a container for the labels and color blocks
+    const severityLabelsContainer = severityLegend.children.push(am5.Container.new(this.root, {
+      width: am5.percent(100),
+      height: am5.percent(100),
+      layout: this.root.horizontalLayout,
+      centerY: am5.percent(50)
+    }));
+
+    // Create color blocks container
+    const severityBlocksContainer = severityLabelsContainer.children.push(am5.Container.new(this.root, {
+      width: am5.percent(60),
+      height: 20,
+      layout: this.root.horizontalLayout,
+      marginLeft: 10,
+      marginRight: 10,
+      centerY: am5.percent(50)
+    }));
+
+    // Define the colors and value ranges for each block
+    const severityColorBlocks = [
+      { color: "#DC3545", range: "Katastropik" },
+      { color: "#FD7E14", range: "Bahaya" },
+      { color: "#FFC107", range: "Biasa" },
+      { color: "#CACBCB", range: "Minimal" },
+    ];
+
+    // Create blocks for legend
+    this.createColorBlocks(severityBlocksContainer, severityColorBlocks);
+
+    // Initially hide the legend
+    severityLegend.hide();
+
+    return severityLegend;
+  }
+
+  createCaseHeatmapLegend(): am5.Container {
+    const caseHeatmapLegend = this.chart.children.push(am5.Container.new(this.root, {
+      width: am5.percent(80),
+      height: 50,
+      layout: this.root.horizontalLayout,
+      position: "absolute",
+      x: am5.percent(50),
+      centerX: am5.percent(50),
+      y: am5.percent(100),
+      dy: -30,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 5,
+      paddingBottom: 5
+    }));
+
+    const labelsContainer = caseHeatmapLegend.children.push(am5.Container.new(this.root, {
+      width: am5.percent(100),
+      height: am5.percent(100),
+      layout: this.root.horizontalLayout,
+      centerY: am5.percent(50)
+    }));
+
+    const blocksContainer = labelsContainer.children.push(am5.Container.new(this.root, {
+      width: am5.percent(60),
+      height: 20,
+      layout: this.root.horizontalLayout,
+      marginLeft: 10,
+      marginRight: 10,
+      centerY: am5.percent(50)
+    }));
+
+    this.createColorBlocks(blocksContainer, [
+      { color: "#FFF5F5", range: "Min" },
+      { color: "#FECACA", range: "Rendah" },
+      { color: "#F87171", range: "Sedang" },
+      { color: "#DC2626", range: "Tinggi" },
+      { color: "#7F1D1D", range: "Max" },
+    ]);
+
+    caseHeatmapLegend.hide();
+
+    return caseHeatmapLegend;
+  }
+
+  /**
+   * Helper method to create color blocks for legends with labels
+   */
+  private createColorBlocks(
+    container: am5.Container, 
+    colorBlocks: Array<{color: string, range: string}>,
+    fontSize: number = 11.5,
+    centerX: number = -100
+  ): void {
+    // Create a higher container for block styling
+    colorBlocks.forEach(block => {
+      // Create a container for each block (to hold both rectangle and label)
+      const blockContainer = container.children.push(am5.Container.new(this.root, {
+        width: am5.percent(100 / colorBlocks.length),
+        height: 25,
+        layout: this.root.verticalLayout
+      }));
+
+      // Add the colored rectangle
+      blockContainer.children.push(am5.Rectangle.new(this.root, {
+        width: am5.percent(100),
+        height: 20,
+        fill: am5.color(block.color),
+      }));
+
+      // Determine text color based on temperature range
+      let textColor = 0xFFFFFF; // Default white
+      
+      // For temperature legends, determine text color based on the temperature value
+      if (block.range.includes("°C")) {
+        const temp = parseInt(block.range);
+        if (temp > -5 && temp < 35) {
+          textColor = 0x000000; // Black for temperatures > 0 and <= 36
+        }
+      }
+
+      // Add the label inside the colored rectangle
+      blockContainer.children.push(am5.Label.new(this.root, {
+        text: block.range,
+        fontSize: fontSize,
+        fontWeight: "500",
+        fill: am5.color(textColor),
+        centerX: am5.percent(centerX),
+        marginTop: -25,
+      }));
+    });
+  }
+} 

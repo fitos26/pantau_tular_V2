@@ -1,0 +1,161 @@
+import React, { useState, useCallback, useEffect, useRef } from "react";
+import { useUserLocation } from "../../hooks/useUserLocation";
+import { useIndonesiaMap } from "../../hooks/useIndonesiaMap";
+import { MapLocation, MapConfig, MapViewport, ProvinceData } from "../../types";
+import { LocationError } from "../../services/LocationService";
+import LocationPermissionPopup from "./LocationPermissionPopup";
+import LocationErrorPopup from "./LocationErrorPopup";
+import DashboardButton from "./floating_buttons/DashboardButton";
+import WarningButton from "./floating_buttons/WarningButton";
+import LocationButton from "./floating_buttons/LocationButton";
+import { MapButton } from "./floating_buttons/MapButton";
+import { useMapStore } from "../../store/store";
+import { MapChartService } from "../../services/mapChartService";
+
+interface IndonesiaMapProps {
+  locations: MapLocation[];
+  config?: Partial<MapConfig>;
+  height?: string;
+  width?: string;
+  onError: (message: string) => void;
+  isFilterVisible?: boolean;
+  onFilterToggle?: () => void;
+  provinceHumidityData: ProvinceData[];
+  provinceTemperatureData: ProvinceData[];
+  provincePrecipitationData: ProvinceData[];
+  provinceSeverityData: ProvinceData[];
+  provinceCaseHeatmapData: ProvinceData[];
+  timeFilter?: React.ReactNode;
+  mapId?: string;
+  shareStore?: boolean;
+  syncStore?: boolean;
+  onMapReady?: (service: MapChartService) => void;
+  showMapChrome?: boolean;
+  onViewportChange?: (viewport: MapViewport) => void;
+}
+
+export const IndonesiaMap: React.FC<IndonesiaMapProps> = ({
+  locations,
+  provinceHumidityData,
+  provinceTemperatureData,
+  provincePrecipitationData,
+  provinceSeverityData,
+  provinceCaseHeatmapData,
+  config = {},
+  height = "100vh",
+  width = "100vw",
+  onError,
+  timeFilter,
+  mapId = "chartdiv",
+  shareStore = true,
+  syncStore = true,
+  onMapReady,
+  showMapChrome = true,
+  onViewportChange,
+}) => {
+  const mapContainerId = mapId;
+  const [showPermissionPopup, setShowPermissionPopup] = useState(false);
+  const [locationError, setLocationError] = useState<LocationError | null>(null);
+  const mapInitialized = useRef(false);
+
+  const fullConfig: MapConfig = {
+    zoomLevel: config.zoomLevel ?? 2,
+    centerPoint: config.centerPoint ?? { longitude: 113.9213, latitude: 0.7893 },
+  };
+
+  const { mapService } = useIndonesiaMap(
+    mapContainerId,
+    locations,
+    fullConfig,
+    provinceHumidityData,
+    provinceTemperatureData,
+    provincePrecipitationData,
+    provinceSeverityData,
+    provinceCaseHeatmapData,
+    onError,
+    mapInitialized.current,
+    { shareStore, syncStore, onViewportChange }
+  );
+
+  useEffect(() => {
+    /*istanbul ignore next*/
+    if (!mapInitialized.current && mapService) {
+      mapInitialized.current = true;
+      if (onMapReady) {
+        onMapReady(mapService);
+      }
+    }
+  }, [mapService, onMapReady]);
+
+  const handleLocationSuccess = useCallback(
+    (latitude: number, longitude: number) => {
+      /*istanbul ignore next*/
+      if (mapService) {
+        mapService.zoomToLocation(latitude, longitude);
+      }
+    },
+    [mapService]
+  );
+
+  const { handleAllow, handleDeny } = useUserLocation(
+    setShowPermissionPopup,
+    setLocationError,
+    handleLocationSuccess,
+    /*istanbul ignore next*/
+    () => setLocationError({ type: "PERMISSION_DENIED", message: "Anda menolak izin lokasi." })
+  );
+  const countSelectedPoints = useMapStore((state) => state.countSelectedPoints);
+
+  return (
+    <div className="relative w-full h-full">
+      <div
+        id={mapContainerId}
+        data-testid="map-container"
+        style={{
+          width,
+          height,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}
+      />
+
+      {showMapChrome && (
+        <>
+          <div className="fixed top-[calc(5rem+1rem)] left-32 z-20 flex gap-3">
+            <LocationButton onClick={() => setShowPermissionPopup(true)} />
+            <WarningButton />
+          </div>
+
+          <div className="fixed top-[calc(5rem+1rem)] right-5 z-20 flex gap-2">
+            <DashboardButton />
+            <MapButton />
+          </div>
+
+          <LocationPermissionPopup
+            open={showPermissionPopup}
+            onClose={() => setShowPermissionPopup(false)}
+            onAllow={handleAllow}
+            onDeny={handleDeny}
+          />
+          <div className="fixed inset-x-4 bottom-4 z-20 flex max-h-[45vh] flex-col gap-3 overflow-y-auto sm:left-5 sm:right-auto sm:bottom-5 sm:max-h-none sm:overflow-visible md:flex-row md:items-end">
+            <div className="w-fit rounded-lg bg-black/60 p-2 text-sm font-bold text-white sm:text-lg">
+              {`Points Visible: ${countSelectedPoints}`}
+            </div>
+            {timeFilter ? <div className="pointer-events-auto">{timeFilter}</div> : null}
+          </div>
+        </>
+      )}
+
+      {locationError && (
+        <LocationErrorPopup
+          open={!!locationError}
+          errorType={locationError.type}
+          onOpenChange={/*istanbul ignore next*/ () => setLocationError(null)}
+        />
+      )}
+    </div>
+  );
+};
